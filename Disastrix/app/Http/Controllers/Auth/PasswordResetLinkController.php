@@ -1,12 +1,14 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\Resetmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
+use App\Models\User;
 
 class PasswordResetLinkController extends Controller
 {
@@ -29,16 +31,30 @@ class PasswordResetLinkController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        // We will send the password reset link to this user. Once we have attempted
-        // to send the link, we will examine the response then see the message we
-        // need to show to the user. Finally, we'll send out a proper response.
+        // Attempt to send the password reset link
         $status = Password::sendResetLink(
             $request->only('email')
         );
 
-        return $status == Password::RESET_LINK_SENT
-                    ? back()->with('status', __($status))
-                    : back()->withInput($request->only('email'))
-                            ->withErrors(['email' => __($status)]);
+        // Check the status of the password reset link
+        if ($status == Password::RESET_LINK_SENT) {
+            // Retrieve the user by email
+            $user = User::where('email', $request->email)->first();
+            if ($user) {
+                // Generate the token
+                $token = app('auth.password.broker')->createToken($user);
+                // Generate the reset link
+                $resetLink = url(config('app.url') . route('password.reset', ['token' => $token, 'email' => $request->email], false));
+
+                // Send the reset email
+                Mail::to($request->email)->send(new Resetmail($resetLink));
+            }
+
+            return back()->with('status', __($status));
+        } else {
+            return back()->withInput($request->only('email'))
+                         ->withErrors(['email' => __($status)]);
+        }
     }
 }
+
