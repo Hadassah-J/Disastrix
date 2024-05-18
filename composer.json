@@ -1,0 +1,10 @@
+{
+    "require": {
+        "wildbit/laravel-postmark-provider": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "kylekatarnls/update-helper": true
+        }
+    }
+}
