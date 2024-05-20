@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "129661db84edbb640e4369df95fe8417",
+    "content-hash": "df36c7419c62568f1259af1e38112afa",
     "packages": [
         {
             "name": "brick/math",
@@ -1049,6 +1049,58 @@
                 }
             ],
             "time": "2023-12-03T19:50:20+00:00"
+        },
+        {
+            "name": "jeremykenedy/laravel2step",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeremykenedy/laravel2step.git",
+                "reference": "2ca767a36ba59687523f5c04491af67753040d06"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeremykenedy/laravel2step/zipball/2ca767a36ba59687523f5c04491af67753040d06",
+                "reference": "2ca767a36ba59687523f5c04491af67753040d06",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "jeremykenedy\\laravel2step\\laravel2stepServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "jeremykenedy\\laravel2step\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "jeremykenedy",
+                    "email": "jeremykenedy@gmail.com"
+                }
+            ],
+            "description": "Laravel 2 Step Authentication Package",
+            "keywords": [
+                "2-step verification",
+                "laravel",
+                "verification"
+            ],
+            "support": {
+                "issues": "https://github.com/jeremykenedy/laravel2step/issues",
+                "source": "https://github.com/jeremykenedy/laravel2step/tree/v1.0.2"
+            },
+            "time": "2018-01-22T00:59:09+00:00"
         },
         {
             "name": "laravel/framework",
