@@ -61,4 +61,8 @@
             </div>
         </form>
     </x-authentication-card>
+    <script>
+    document.body.style.backgroundImage = "url('/images/Emergency.jpg')";
+    document.body.style.backgroundSize = "cover";
+</script>
 </x-guest-layout>
