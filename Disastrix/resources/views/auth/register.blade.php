@@ -18,10 +18,7 @@
                 <x-label for="email" value="{{ __('Email') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
             </div>
-             <div class="mt-4">
-                <x-label for="role" value="{{ __('Role') }}" />
-                <x-drop-select id="role" class="block mt-1 w-full" />
-            </div>
+             
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
