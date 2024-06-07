@@ -29,6 +29,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Lock screen button
     document.getElementById('lock-screen-button').addEventListener('click', function () {
-        lockScreen();
+        window.location.href="/lock";
     });
 });

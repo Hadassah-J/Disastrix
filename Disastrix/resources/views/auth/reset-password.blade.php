@@ -18,6 +18,8 @@
 
             <div class="mt-4">
                 <x-label for="password" value="{{ __('Password') }}" />
+                <p>The password must contain 8 characters, must include numbers,symbols, uppercase letters and lowercase letters</p>
+
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
             </div>
 
