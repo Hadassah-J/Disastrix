@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->integer('role_id');
-            //$table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade'); // Adjusted to reference roles table
+            //$table->integer('role_id');
+            $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade'); // Adjusted to reference roles table
             $table->string('password');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable(); // Adjusted constraint
@@ -80,11 +80,7 @@ return new class extends Migration
         });
 
         // Create volunteers table
-        Schema::create('volunteers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
-            $table->timestamps();
-        });
+       
 
         // Create emergencies table
         Schema::create('emergencies', function (Blueprint $table) {
@@ -103,6 +99,13 @@ return new class extends Migration
             $table->timestamp('time_of_incident');
             $table->timestamps();
         });
+        Schema::create('deployers', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('incident_id')->constrained('incidents')->onDelete('cascade')->onUpdate('cascade');
+            //$table->foreignId('incident_id')->references('id')->on('incidents')->onDelete('cascade')->onUpdate('cascade');
+            $table->timestamps();
+        });
 
         // Create deployments table
         Schema::create('deployments', function (Blueprint $table) {
@@ -114,6 +117,7 @@ return new class extends Migration
             $table->integer('deployment_force_number');
             $table->timestamps();
         });
+
     }
 
 
@@ -122,7 +126,7 @@ return new class extends Migration
         Schema::dropIfExists('deployments');
         Schema::dropIfExists('incidents');
         Schema::dropIfExists('emergencies');
-        Schema::dropIfExists('volunteers');
+        Schema::dropIfExists('deployers');
         Schema::dropIfExists('responders');
         Schema::dropIfExists('organizations');
         Schema::dropIfExists('admins');
