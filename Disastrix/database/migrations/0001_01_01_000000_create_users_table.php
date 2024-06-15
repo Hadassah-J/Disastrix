@@ -30,6 +30,19 @@ return new class extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
+        Schema::create('heads', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
+            //$table->integer('role_id');
+            //$table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade'); // Adjusted to reference roles table
+            $table->string('password');
+            $table->rememberToken();
+            //$table->foreignId('current_team_id')->nullable(); // Adjusted constraint
+            $table->string('profile_photo_path', 2048)->nullable();
+            $table->timestamps();
+        });
 
         // Create password_reset_tokens table
         Schema::create('password_reset_tokens', function (Blueprint $table) {
@@ -57,6 +70,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
 
@@ -80,7 +94,7 @@ return new class extends Migration
         });
 
         // Create volunteers table
-       
+
 
         // Create emergencies table
         Schema::create('emergencies', function (Blueprint $table) {
@@ -124,6 +138,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('deployments');
+        Schema::dropIfExists('heads');
         Schema::dropIfExists('incidents');
         Schema::dropIfExists('emergencies');
         Schema::dropIfExists('deployers');
