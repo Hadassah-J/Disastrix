@@ -9,6 +9,9 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+
+
 
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -18,6 +21,10 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    public function Role(): HasMany
+{
+    return $this->hasMany(Role::class, 'role_id');
+}
 
     /**
      * The attributes that are mass assignable.
