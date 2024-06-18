@@ -1,15 +1,25 @@
-<form method="POST" action="{{ route('p.email') }}">
-    @csrf
+<!-- resources/views/users/edit.blade.php -->
 
-    <div class="block">
-        <h2>We would like to know more about you in order to personalize your experience.</h2>
-        <x-label for="role" value="{{ __('Role') }}" />
-        <x-drop-select />
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit User Role</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Edit User Role</h1>
+        <form action="{{ route('assign') }}" method="POST">
+            @csrf
+            @method('PUT')
+            <div class="form-group">
+                <input type="hidden" name="user_id" value="{{ $user->id}}">
+                <label for="role">Role:</label>
+                <x-drop-select />
+            </div>
+            <button type="submit" class="btn btn-primary">Update Role</button>
+        </form>
     </div>
+</body>
+</html>
 
-    <div class="flex items-center justify-end mt-4">
-        <x-button class="ms-4">
-            {{ __('Submit') }}
-        </x-button>
-    </div>
-</form>

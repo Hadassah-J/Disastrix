@@ -12,26 +12,28 @@ class RoleController extends Controller
         return view('popup'); // Adjusted to pass the id correctly to the view
     }
 
-    public function assignRole($id,Request $request)
+    public function assignRole(Request $request)
     {
-        $user = Auth::user(); 
-        $id=$user->id;
-
-        $validatedData = $request->validate([
-            'role' => 'required|string',
+        $request->validate([
+            'user_id' => 'required|exists:user,id',
+            'role' => 'required|string|max:255',
         ]);
 
-        // Assign role based on the input
-        if ($validatedData['role'] == 'Public user') {
-            $user->role_id = 1;
-            $user->save(); // Save the user before redirection
-            return redirect('/dashboard');
-        } elseif ($validatedData['role'] == 'Respondent') {
-            $user->role_id = 2;
-            $user->save(); // Save the user before redirection
-            return redirect('/respondent');
-        } else {
-            abort(403, 'Page not found');
-        }
+        // Find the user and update the role
+        $user = User::find($request->id);
+       if($request->role=="Public user"){
+          $user->role_id=1;
+
+       }else if($request->role== 'Respondent'){
+        $user->role_id= 2;
+
+       
+
+
+    }else{
+        abort(403,'Page not found');
     }
-}
+    $user->save();
+    return redirect()->back()->with('success', 'User role updated successfully');
+
+}}
