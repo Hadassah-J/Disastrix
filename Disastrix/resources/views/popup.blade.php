@@ -13,7 +13,8 @@
             @csrf
             @method('PUT')
             <div class="form-group">
-                <input type="hidden" name="user_id" value="{{ $user->id}}">
+                dd($user);
+                {{--<input type="hidden" name="user_id" value="{{ $user->id }}">--}}
                 <label for="role">Role:</label>
                 <x-drop-select />
             </div>
