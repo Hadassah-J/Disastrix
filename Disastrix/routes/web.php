@@ -28,7 +28,10 @@ Route::get('/users',[AdminController::class,'view'])->name('users');
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('user/role', [RoleController::class, 'show'])->name('show');
-    Route::put('user/role/put', [RoleController::class, 'assignRole'])->name('assign');
+    Route::get('/admin', [AdminController::class, 'show']);
+    Route::get('/users',[AdminController::class,'view'])->name('users');
+
+    Route::get('users/edit-users/{id}', [AdminController::class, 'viewUserInfo'])->name('edit-user');
+    Route::put('user/update/{id}', [AdminController::class, 'updateUserInfo'])->name('update-user');
 });
 
