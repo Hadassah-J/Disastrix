@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Head extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+        'name',
+        'email',
+        'password',
+
+    ];
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

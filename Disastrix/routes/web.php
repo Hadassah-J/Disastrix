@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\OrganizationRegisterController;
+use App\Http\Controllers\OrganizationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\LockScreenController;
@@ -22,10 +22,11 @@ Route::middleware([
 });
 Route::get('/lock', [LockScreenController::class, 'show'])->name('lock');
 Route::post('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
-Route::get('/organizations/register', [OrganizationRegisterController::class, 'view'])->name('organizations/register');
-Route::get('/admin', [AdminController::class, 'show']);
-Route::get('/users',[AdminController::class,'view'])->name('users');
+Route::get('/organizations/register', [OrganizationController::class, 'view'])->name('organizations/register');
 
+
+Route::get('admin/add',[AdminController::class,'adminRegister'])->name('admin-register');
+Route::post('/admin/register',[AdminController::class,'addAdmin'])->name('admin-add');
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'show']);

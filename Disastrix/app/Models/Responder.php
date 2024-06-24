@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Responder extends Model
 {
     use HasFactory;
+
+    protected $filliable=[
+        'user_id',
+        'organization'
+    ];
+    protected $appends = [
+        'profile_photo_url',
+    ];
 }

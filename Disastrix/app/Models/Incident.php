@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Incident extends Model
 {
     use HasFactory;
+
+    protected $fillable=[
+       'incident_type',
+       'location',
+       'time_of_incident',
+    ];
 }

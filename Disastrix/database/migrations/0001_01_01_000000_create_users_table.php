@@ -56,7 +56,7 @@ return new class extends Migration
         });
         Schema::create('heads', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             //$table->integer('role_id');
@@ -91,7 +91,7 @@ return new class extends Migration
         // Create admins table
         Schema::create('admins', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('email')->unique();
             $table->string('password');
             $table->string('profile_photo_path', 2048)->nullable();

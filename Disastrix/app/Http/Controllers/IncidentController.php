@@ -20,7 +20,7 @@ class IncidentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

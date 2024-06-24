@@ -6,6 +6,7 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Admin;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -35,7 +36,7 @@ class AdminController extends Controller
          return view('users.edit-users', ['user' => $user],['roles' => $this->roles]);
     }
     public function updateUserInfo($id, Request $request){
-    {
+    
         // Validate the request data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -69,5 +70,28 @@ class AdminController extends Controller
         return redirect()->route('edit-user', $user->id)->with('success', 'User information updated successfully.');
     }
 
+public function AdminRegister(){
+    return view('admin.admin-register');
+}
 
-}}
+
+public function addAdmin(Request $request){
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|',
+            'password' => 'required|string|min:8',
+        ]);
+        $user=User::create($validatedData);
+        $user->role_id=Role::findByName('admin')->id;
+        $user->assignRole('admin');
+        $user->save();
+
+        return Admin::create([
+            'user_id'=>$user->id,
+            'email'=>$user->email,
+            'password'=> Hash::make($request['password']),
+        ]);
+    }
+
+
+}
