@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
@@ -38,7 +39,7 @@ class AdminController extends Controller
         // Validate the request data
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email',
+            'email' => 'required|string|email|max:255|',
             'password' => 'required|string|min:8',
             'roles'=> 'required|string'
         ]);
@@ -55,8 +56,12 @@ class AdminController extends Controller
                 'password'=> Hash::make($request['password']),
                 'role_id'=>Role::findByName($request['roles'])->id,
             ]
-        )->save();
-
+        );
+        $role = Role::findByName($request['roles']);
+        if ($role) {
+            $user->syncRoles([$role]);
+        }
+        $user->save();
 
 
 
