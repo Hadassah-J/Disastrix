@@ -25,7 +25,7 @@ Route::post('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
 Route::get('/organizations/register', [OrganizationController::class, 'view'])->name('organizations/register');
 
 
-Route::get('admin/add',[AdminController::class,'adminRegister'])->name('admin-register');
+Route::get('/admin/add',[AdminController::class,'adminRegister'])->name('admin-register');
 Route::post('/admin/register',[AdminController::class,'addAdmin'])->name('admin-add');
 
 Route::middleware('auth')->group(function () {
