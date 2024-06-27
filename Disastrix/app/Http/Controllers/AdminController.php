@@ -65,6 +65,12 @@ class AdminController extends Controller
         }
         $user->save();
 
+        $admin = Admin::create([
+            'user_id' => $user->id,
+            'email' => $user->email,
+            'password' => Hash::make($validatedData['password']),
+        ]);
+
 
 
         // Redirect back with a success message

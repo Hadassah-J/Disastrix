@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Incident;
 
 class IncidentController extends Controller
 {
@@ -20,7 +21,7 @@ class IncidentController extends Controller
      */
     public function create()
     {
-        
+        return view('deploy.emergency-report');
     }
 
     /**
@@ -28,7 +29,18 @@ class IncidentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData=$request->validate([
+            'type' => 'required|string',
+            'location' => 'required|string|max:300',
+            'time' => 'required',
+            'details' => 'required',
+        ]);
+
+        $incident=Incident::create([
+            'incident_type' => $request['type'],
+            'location'=> $request['location'],
+            'time'=> $request['time'],
+        ]);
     }
 
     /**

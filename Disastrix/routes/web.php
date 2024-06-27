@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\IncidentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\LockScreenController;
@@ -23,10 +24,14 @@ Route::middleware([
 Route::get('/lock', [LockScreenController::class, 'show'])->name('lock');
 Route::post('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
 Route::get('/organizations/register', [OrganizationController::class, 'view'])->name('organizations/register');
+Route::post('/organizations/add',[OrganizationController::class,'addOrganization'])->name('organizations/add');
 
 
 Route::get('/admin/add',[AdminController::class,'adminRegister'])->name('admin-register');
 Route::post('/admin/register',[AdminController::class,'addAdmin'])->name('admin-add');
+Route::get('/incident/report',[IncidentController::class,'create'])->name('incident-report');
+Route::post('/incident/show',[IncidentController::class,'store'])->name('incident-show');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'show']);

@@ -12,6 +12,6 @@ class Organization extends Model
     protected $fillable=[
         'organization_name',
         'location',
-        'employee_number'
+        
     ];
 }

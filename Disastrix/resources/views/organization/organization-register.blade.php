@@ -6,7 +6,7 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('organizations/add') }}">
             @csrf
 
             <div>
@@ -19,10 +19,10 @@
                 <x-input id="location" class="block mt-1 w-full" type="text" name="location" :value="old('location')" required autocomplete="location" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="incident_type" value="{{ __('Incident type') }}" />
+            <!--<div class="mt-4">
+                <x-label for="incident_type" value="{{ __() }}" />
                 <x-input id="incident_type" class="block mt-1 w-full" type="text" name="incident_type" required autocomplete="incident_type" />
-            </div>
+            </div>-->
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">

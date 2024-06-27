@@ -6,12 +6,12 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('incident-show') }}">
             @csrf
 
-            <div class="mt-4">
-                <x-label for="location" value="{{ __('Incident type') }}" />
-                <x-incident-list>
+            <div>
+                <x-label for="name" value="{{ __('Incident type') }}" />
+                <x-incident-list />
             </div>
 
             <div class="mt-4">
@@ -20,8 +20,13 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="incident_type" value="{{ __('Details') }}" />
-                <x-input id="incident_type" class="block mt-1 w-full" type="text" name="incident_type" required autocomplete="incident_type" />
+                <x-label for="time" value="{{ __('Time') }}" />
+                <x-input id="time" class="block mt-1 w-full" type="time" name="time" :value="old('time')" required autocomplete="time" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="Details" value="{{ __('Details') }}" />
+                <input id="details" class='border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm block mt-1 w-full h-40px' type="text" name="details" required autocomplete="details" />
             </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -44,7 +49,7 @@
 
 
                 <x-button class="ms-4">
-                    {{ __('Report') }}
+                    {{ __('Submit') }}
                 </x-button>
             </div>
         </form>

@@ -25,28 +25,28 @@
                 @endcan
                 @can('edit organizations')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                    <x-nav-link href="{{ route('organizations') }}" :active="request()->routeIs('users')">
                         {{ __('Organizations') }}
                     </x-nav-link>
                 </div>
                 @endcan
                 @can('edit incidents')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                    <x-nav-link href="{{ route('incidents') }}" :active="request()->routeIs('users')">
                         {{ __('Incidents') }}
                     </x-nav-link>
                 </div>
                 @endcan
                 @can('edit respondents')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                    <x-nav-link href="{{ route('respondents') }}" :active="request()->routeIs('users')">
                         {{ __('Respondents') }}
                     </x-nav-link>
                 </div>
                 @endcan
                 @can('edit admins')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
+                    <x-nav-link href="{{ route('admins') }}" :active="request()->routeIs('users')">
                         {{ __('Admins') }}
                     </x-nav-link>
                 </div>
