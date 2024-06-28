@@ -41,6 +41,29 @@ class IncidentController extends Controller
             'location'=> $request['location'],
             'time'=> $request['time'],
         ]);
+
+        return redirect()->route('incident.view',$incident->id);
+    }
+
+    public function viewIncident($id){
+        $incident=Incident::findOrFail($id);
+        $geocodeUrl = 'https://api.tomtom.com/search/2/geocode/' . urlencode($incident->location) . '.json?key=RjAqQpQ9rqBdykGlcbflQi1JwNOpVAtw';
+        $response = file_get_contents($geocodeUrl);
+        $data = json_decode($response, true);
+
+       if (isset($data['results']) && count($data['results']) > 0) {
+        $position = $data['results'][0]['position'];
+        $incident->latitude = $position['lat'];
+        $incident->longitude = $position['lon'];
+       } else {
+        // Handle error or set default coordinates
+        $incident->latitude = 0;
+        $incident->longitude = 0;
+       }
+
+
+
+        return view('deploy.emergency-progress',compact('incident'));
     }
 
     /**

@@ -32,6 +32,8 @@ Route::post('/admin/register',[AdminController::class,'addAdmin'])->name('admin-
 Route::get('/incident/report',[IncidentController::class,'create'])->name('incident-report');
 Route::post('/incident/show',[IncidentController::class,'store'])->name('incident-show');
 
+Route::get('/incident/view/{id}',[IncidentController::class,'viewIncident'])->name('incident.view');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'show']);
