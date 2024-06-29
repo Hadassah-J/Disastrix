@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Head;
+use App\Models\Responder;
+
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -15,20 +18,40 @@ class AdminController extends Controller
 {
     protected $users;
     protected $roles;
+    protected $admins;
+    protected $public_usercount;
+    protected $respondercount;
+
+    protected $organization_headcount;
+    protected $admincount;
+
 
     public function __construct()
     {
         // Load all users data
         $this->users = User::all();
         $this->roles = Role::all();
+        $this->admins = Admin::all();
+
+        $this->public_usercount = User::where('role_id',1)->count();
+        $this->admincount = User::where('role_id',2)->count();
+        $this->organization_headcount= User::where('role_id',3)->count();
+        $this->respondercount = User::where('role_id',4)->count();
+        
+
     }
     public function show(){
         return view('admin.content');
     }
-    public function view(){
+    public function viewUsers(){
 
         return view('admin.show-users', ['users' => $this->users],['roles' => $this->roles]);
     }
+    public function viewAdmins(){
+        return view('admin.show-admins',['users'=>$this->users],['admins'=> $this->admins]);
+
+    }
+
     public function viewUserInfo($id){
          // Load specific user data by id
          $user = User::findOrFail($id);
@@ -65,12 +88,26 @@ class AdminController extends Controller
         }
         $user->save();
 
+        if($request['roles']=='admin'){
+
         $admin = Admin::create([
             'user_id' => $user->id,
             'email' => $user->email,
             'password' => Hash::make($validatedData['password']),
         ]);
+    }else if($request['roles']=='organization head'){
+        $head=Head::create([
+            'user_id'=> $user->id,
+            'organization'=> NULL,
 
+        ]);
+    
+    }else if($request['roles']=='responder'){
+        $responder=Responder::create([
+            'user_id'=> $user->id,
+        ]);
+
+    }
 
 
         // Redirect back with a success message

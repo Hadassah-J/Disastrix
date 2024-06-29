@@ -9,7 +9,7 @@ class Responder extends Model
 {
     use HasFactory;
 
-    protected $filliable=[
+    protected $fillable=[
         'user_id',
         'organization'
     ];

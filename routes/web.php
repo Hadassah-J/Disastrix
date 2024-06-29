@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrganizationController;
+use App\Http\Controllers\ResponderController;
 use App\Http\Controllers\IncidentController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
@@ -37,7 +38,11 @@ Route::get('/incident/view/{id}',[IncidentController::class,'viewIncident'])->na
 
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'show']);
-    Route::get('/users',[AdminController::class,'view'])->name('users');
+    Route::get('/admins',[AdminController::class, 'viewAdmins'])->name('admins');
+    Route::get('/users',[AdminController::class,'viewUsers'])->name('users');
+    Route::get('/responders',[ResponderController::class,'index'])->name('responders');
+    Route::get('/organizations',[OrganizationController::class,'viewOrganizations'])->name('organizations');
+    Route::get('/incidents',[IncidentController::class,'index'])->name('incidents');
 
     Route::get('users/edit-users/{id}', [AdminController::class, 'viewUserInfo'])->name('edit-user');
     Route::put('user/update/{id}', [AdminController::class, 'updateUserInfo'])->name('update-user');

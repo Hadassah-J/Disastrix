@@ -13,7 +13,8 @@ class IncidentController extends Controller
      */
     public function index()
     {
-        //
+        $incidents = Incident::all();
+        return view('organization.incident-view',compact('incidents'));
     }
 
     /**

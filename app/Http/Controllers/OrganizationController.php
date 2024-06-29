@@ -12,6 +12,11 @@ class OrganizationController extends Controller
         return view('organization.organization-register');
     }
 
+    public function viewOrganizations(){
+        $organizations = Organization::all();
+        return view('organization.organization-view',compact('organizations'));
+    }
+
     public function addOrganization(Request $request){
         $validatedData=$request->validate([
              'name' => 'required|string|max:255',

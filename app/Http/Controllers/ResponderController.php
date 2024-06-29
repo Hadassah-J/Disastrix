@@ -4,15 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Responder;
+use App\Models\User;
 
-class RespondentController extends Controller
+class ResponderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $users=User::all();
+        $responders=Responder::all();
+        return view('organization/responder-view', compact('responders'), compact('users'));
+
     }
 
     /**

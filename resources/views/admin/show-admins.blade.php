@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Incidents List
+            Admins List
         </h2>
     </x-slot>
 
@@ -21,57 +21,50 @@
                                         ID
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Type
+                                        Name
                                     </th>
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Location
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Time of incident
+                                        Email
                                     </th>
                                     
-
-
+                                    
                                     <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
 
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($incidents as $incident)
+                                @foreach ($users as $user)
+                                    @foreach($admins as $admin)
+                                        @if($admin->user_id == $user->id)
+                                           <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                            {{ $admin->user_id }}
+                                            </td>
 
-                                    <tr>
-                                       <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $incident->id }}
-                                        </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                            {{ $user->name }}
+                                            </td>
 
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $incident->incident_type}}
-                                        </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                            {{ $user->email }}
+                                            </td>
 
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $incident->location}}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            {{ $incident->time_of_incident}}
-                                        </td>
-
-
-                                            
-
-
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                           
+                                    
+                                          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                             <a href="" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
-                                            <a href="" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                            <a href="{{route('edit-user', ['id' => $user->id])}}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
                                             <form class="inline-block" action="" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                 <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
                                             </form>
-                                        </td>
-                                    </tr>
-                                @endforeach    
-                                
+                                          </td>
+                                          </tr>
+                                        @endif
+                                    @endforeach
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

@@ -24,7 +24,11 @@
             var startCoordinates = [0,0]; // Replace with actual coordinates
 
             // Create a route
-            tt.services.calculateRoute({
+            map.on('load', function(){
+                new tt.Marker().setLngLat(startCoordinates).addTo(map);
+                new tt.Marker().setLngLat(incidentCoordinates).addTo(map);
+
+                tt.services.calculateRoute({
                 key: 'RjAqQpQ9rqBdykGlcbflQi1JwNOpVAtw',
                 locations: [startCoordinates, incidentCoordinates]
             }).then(function (routeData) {
@@ -37,7 +41,7 @@
                         data: geojson
                     },
                     paint: {
-                        'line-color': '#4a90e2',
+                        'line-color': '#FFFFFF',
                         'line-width': 6
                     }
                 });
@@ -47,6 +51,8 @@
             }).catch(function (error) {
                 console.error('Error calculating route:', error);
             });
+            });
+
         </script>
     </x-authentication-card>
 </x-guest-layout>

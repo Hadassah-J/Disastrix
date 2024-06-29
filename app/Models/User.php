@@ -27,6 +27,8 @@ class User extends Authenticatable implements MustVerifyEmail
     return $this->hasMany(Role::class, 'role_id');
 }
 
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -35,6 +37,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'secondary_email',
         'role_id',
         'password',
     ];
@@ -59,6 +62,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    protected $dates=[
+        'last_seen',
+    ];
 
     /**
      * Get the attributes that should be cast.
@@ -69,7 +75,15 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return [
             'email_verified_at' => 'datetime',
+            'last_seen' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
+    public function isOnline()
+{
+    $lastSeen = $this->last_seen;
+    
+    return $lastSeen && $lastSeen->gt(now()->subMinutes(5));
+}
 }
