@@ -11,7 +11,8 @@ class Responder extends Model
 
     protected $fillable=[
         'user_id',
-        'organization'
+        'organization',
+        'status'
     ];
     protected $appends = [
         'profile_photo_url',

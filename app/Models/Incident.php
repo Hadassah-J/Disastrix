@@ -13,5 +13,6 @@ class Incident extends Model
        'incident_type',
        'location',
        'time_of_incident',
+       'status',
     ];
 }

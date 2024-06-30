@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Incident;
+use App\Models\Organization;
 
 class IncidentController extends Controller
 {
@@ -41,32 +42,65 @@ class IncidentController extends Controller
             'incident_type' => $request['type'],
             'location'=> $request['location'],
             'time'=> $request['time'],
+            'status' => 'pending',
         ]);
 
         return redirect()->route('incident.view',$incident->id);
     }
 
     public function viewIncident($id){
+        $organizations=Organization::all();
         $incident=Incident::findOrFail($id);
         $geocodeUrl = 'https://api.tomtom.com/search/2/geocode/' . urlencode($incident->location) . '.json?key=RjAqQpQ9rqBdykGlcbflQi1JwNOpVAtw';
         $response = file_get_contents($geocodeUrl);
         $data = json_decode($response, true);
 
+        $distances=[];
+
        if (isset($data['results']) && count($data['results']) > 0) {
         $position = $data['results'][0]['position'];
         $incident->latitude = $position['lat'];
         $incident->longitude = $position['lon'];
+        $incident->save();
        } else {
         // Handle error or set default coordinates
         $incident->latitude = 0;
         $incident->longitude = 0;
        }
+       foreach($organizations as $organization){
+        $geocodeOrganizationUrl = 'https://api.tomtom.com/search/2/geocode/' . urlencode($organization->location) . '.json?key=RjAqQpQ9rqBdykGlcbflQi1JwNOpVAtw';
+        $locationresponse = file_get_contents($geocodeOrganizationUrl);
+        $locationdata = json_decode($locationresponse, true);
+        if (isset($locationdata['results']) && count($locationdata['results']) > 0) {
+            $orgposition = $locationdata['results'][0]['position'];
+            $organization->latitude = $orgposition['lat'];
+            $organization->longitude = $orgposition['lon'];
+            $organization->save();
+           } else {
+            // Handle error or set default coordinates
+            $organization->latitude = 0;
+            $organization->longitude = 0;
+           }
+
+           $theta = $incident->longitude - $organization->longitude;
+           $dist = sin(deg2rad($incident->latitude)) * sin(deg2rad($organization->latitude)) +  cos(deg2rad($incident->latitude)) * cos(deg2rad($organization->latitude)) * cos(deg2rad($theta));
+           $dist = acos($dist);
+           $dist = rad2deg($dist);
+           $distance = $dist * 60 * 1.1515 * 1.609344; // distance in kilometers
+       
+           // Store distance
+           $distances[$organization->id] = $distance;
+           asort($distances);
+           $nearestOrganizationId = key($distances);
+           $nearestOrganization = Organization::findOrFail($nearestOrganizationId);
+       }
+
+          return view('deploy.emergency-progress',compact('incident'),compact('nearestOrganization'));
+       }
 
 
 
-        return view('deploy.emergency-progress',compact('incident'));
-    }
-
+    
     /**
      * Display the specified resource.
      */

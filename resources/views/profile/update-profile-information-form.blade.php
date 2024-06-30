@@ -103,6 +103,15 @@
                 @endif
             @endif
         </div>
+
+        @if($this->user->role_id==3 || $this->user->role_id==4)
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="organization_name" value="{{ __('Organization') }}" />
+            <x-input id="organization_name" type="text" class="mt-1 block w-full" wire:model="state.organization_name" required autocomplete="name" />
+            <x-input-error for="name" class="mt-2" />
+        </div>
+        @endif
+
     </x-slot>
 
     <x-slot name="actions">

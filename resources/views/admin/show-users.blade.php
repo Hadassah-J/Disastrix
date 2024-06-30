@@ -61,8 +61,8 @@
                                         </td>
 
                                         @endif
-                                        
-                                    
+
+
 
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                            @foreach($roles as $role)
@@ -107,12 +107,12 @@
         datasets: [{
           label: 'User roles',
           backgroundColor: ['rgb(234, 179, 8)', 'rgb(34, 197, 94)', 'rgb(239, 68, 68)','rgb(202,111,303)'],
-          data:  [@json($respondercount), @json($public_usercount), @json($organization_headcount), @json($admincount)],
+
         }]
       },
     });
 </script>
-            
+
 
         </div>
     </div>

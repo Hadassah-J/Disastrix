@@ -52,7 +52,9 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable(); // Adjusted constraint
             $table->string('profile_photo_path', 2048)->nullable();
+
             $table->timestamps();
+
         });
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
@@ -139,6 +141,9 @@ return new class extends Migration
             $table->string('location');
             $table->timestamp('time_of_incident');
             $table->timestamps();
+            $table->string('latitude');
+            $table->string('longitude');
+            $table->string('status');
         });
         Schema::create('deployers', function (Blueprint $table) {
             $table->id();
