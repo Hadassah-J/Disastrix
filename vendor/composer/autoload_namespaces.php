@@ -6,7 +6,4 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'UpdateHelper\\' => array($vendorDir . '/kylekatarnls/update-helper/src'),
-    'Postmark\\' => array($vendorDir . '/wildbit/swiftmailer-postmark/src', $vendorDir . '/wildbit/laravel-postmark-provider/src'),
-    'Parsedown' => array($vendorDir . '/erusev/parsedown'),
 );
