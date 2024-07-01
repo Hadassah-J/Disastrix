@@ -60,6 +60,8 @@ return new class extends Migration
             $table->id();
             $table->string('organization_name')->unique();
             $table->string('location');
+            $table->string('latitude');
+            $table->string('longitude');
             //$table->integer('employee_number');
             $table->timestamps();
         });
@@ -147,7 +149,7 @@ return new class extends Migration
         });
         Schema::create('deployers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('responder_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('incident_id')->constrained('incidents')->onDelete('cascade')->onUpdate('cascade');
             //$table->foreignId('incident_id')->references('id')->on('incidents')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

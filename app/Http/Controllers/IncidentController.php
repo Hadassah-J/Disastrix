@@ -43,6 +43,7 @@ class IncidentController extends Controller
             'location'=> $request['location'],
             'time'=> $request['time'],
             'status' => 'pending',
+            
         ]);
 
         return redirect()->route('incident.view',$incident->id);
@@ -87,7 +88,7 @@ class IncidentController extends Controller
            $dist = acos($dist);
            $dist = rad2deg($dist);
            $distance = $dist * 60 * 1.1515 * 1.609344; // distance in kilometers
-       
+
            // Store distance
            $distances[$organization->id] = $distance;
            asort($distances);
@@ -100,13 +101,14 @@ class IncidentController extends Controller
 
 
 
-    
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $incident=Incident::findorFail($id);
+        return view('deploy.view-incident',compact('incident'));
     }
 
     /**
@@ -116,6 +118,8 @@ class IncidentController extends Controller
     {
         //
     }
+
+    
 
     /**
      * Update the specified resource in storage.

@@ -7,6 +7,16 @@ use Illuminate\Validation\Rules\Password;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    protected $listen = [
+        'Illuminate\Auth\Events\Login' => [
+            'App\Listeners\UpdateUserStatus',
+        ],
+        'Illuminate\Auth\Events\Logout' => [
+            'App\Listeners\UpdateUserStatus',
+        ],
+    ];
+    
     /**
      * Register any application services.
      */

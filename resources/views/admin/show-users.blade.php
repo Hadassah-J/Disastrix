@@ -51,7 +51,7 @@
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                             {{ $user->email }}
                                         </td>
-                                        @if($user->isOnline())
+                                        @if($user->is_online)
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Online
                                         </td>

@@ -26,22 +26,26 @@
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Email
                                     </th>
+
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Organization
                                     </th>
+
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Status
                                     </th>
-                                    
-                                    
+
+
                                     <th scope="col" width="200" class="px-6 py-3 bg-gray-50">
 
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
+
                                 @foreach ($users as $user)
                                     @foreach($responders as $responder)
+
                                         @if($responder->user_id == $user->id)
                                            <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -60,19 +64,13 @@
                                             {{ $responder->organization }}
                                             </td>
 
-                                            @if($user->isOnline())
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            Online
+                                                {{ $user->is_online ? 'Online' : 'Offline' }}
                                             </td>
-                                            @else
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                Offline
-                                            </td>
-                                            @endif
 
-                                    
+
                                           <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <a href="" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+                                            
                                             <a href="{{route('edit-user', ['id' => $user->id])}}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
                                             <form class="inline-block" action="" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 <input type="hidden" name="_method" value="DELETE">

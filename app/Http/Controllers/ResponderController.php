@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Responder;
 use App\Models\User;
+use App\Models\Head;
+use Illuminate\Support\Facades\Auth;
 
 class ResponderController extends Controller
 {
@@ -35,7 +37,17 @@ class ResponderController extends Controller
     {
         //
     }
-
+    public function showOnlineResponders($id){
+        $head = Head::where('user_id', Auth::user()->id)->first();
+        if ($head) {
+            $organization = $head->organization;
+            $responders = Responder::where('organization', $organization)->get();
+        } else {
+            // Handle the case where the authenticated user is not a head of any organization
+            $responders = collect();
+        }
+        return view('organization.dispatch-responders',compact('responders'));
+    }
     /**
      * Display the specified resource.
      */
