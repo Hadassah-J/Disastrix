@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Admin;
 use App\Models\Head;
 use App\Models\Responder;
+use App\Notifications\RoleNotification;
 
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -37,7 +38,7 @@ class AdminController extends Controller
         $this->admincount = User::where('role_id',2)->count();
         $this->organization_headcount= User::where('role_id',3)->count();
         $this->respondercount = User::where('role_id',4)->count();
-        
+
 
     }
     public function show(){
@@ -87,6 +88,7 @@ class AdminController extends Controller
             $user->syncRoles([$role]);
         }
         $user->save();
+        $user->notify(new RoleNotification($role));
 
         if($request['roles']=='admin'){
 
@@ -101,7 +103,7 @@ class AdminController extends Controller
             'organization'=> NULL,
 
         ]);
-    
+
     }else if($request['roles']=='responder'){
         $responder=Responder::create([
             'user_id'=> $user->id,

@@ -10,13 +10,14 @@ use Illuminate\Notifications\Notification;
 class DispatchNotification extends Notification
 {
     use Queueable;
+    protected $incident;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($incident)
     {
-        //
+        $this->incident=$incident;
     }
 
     /**
@@ -35,8 +36,8 @@ class DispatchNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('You have been dispatched to this incident')
+                    ->action('View incident', url('/incidents/'.$this->incident->id))
                     ->line('Thank you for using our application!');
     }
 

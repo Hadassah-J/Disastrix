@@ -10,13 +10,15 @@ use Illuminate\Notifications\Notification;
 class RoleNotification extends Notification
 {
     use Queueable;
+    protected $role;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct($role)
     {
-        //
+        $this->role=$role;
+
     }
 
     /**
@@ -35,8 +37,8 @@ class RoleNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+                    ->line('You have been assigned a new role,{$this->role}')
+                    ->action('Please login again', url('/login'))
                     ->line('Thank you for using our application!');
     }
 

@@ -50,7 +50,9 @@ class IncidentNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            //
+            'incident_id'=>$this->incident->id,
+            'incident_location'=>$this->incident->location,
+
         ];
     }
 }

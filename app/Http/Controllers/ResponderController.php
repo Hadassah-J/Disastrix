@@ -8,6 +8,10 @@ use App\Models\Responder;
 use App\Models\User;
 use App\Models\Head;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Incident;
+use App\Models\Deployer;
+use App\Models\Deployment;
+use App\Notifications\DispatchNotification;
 
 class ResponderController extends Controller
 {
@@ -47,6 +51,33 @@ class ResponderController extends Controller
             $responders = collect();
         }
         return view('organization.dispatch-responders',compact('responders'));
+    }
+
+    public function dispatchResponders(Request $request,$id){
+        $incident = Incident::findOrFail($id);
+        $responders = $request->input('responders', []);
+        foreach($responders as $responder){
+           $deployer=Deployer::create([
+              'responder_id' => $responder,
+              'incident_id'=>$id
+           ]);
+           $responderperson=Responder::where('id',$responder);
+           $responderperson->status='dispatched';
+           $responderperson->save();
+           $responderperson->notify(new DispatchNotification($incident));
+
+          
+        }
+        $deployment=Deployment::create([
+            'incident_id' => $id,
+            'response_organization'=>Responder::where('id',$responder)->organization,
+            'time_responded'=>now(),
+            'deployment_force_number' => count($responders),
+         ]);
+        
+        $incident->status="solved";
+        $incident->save();
+
     }
     /**
      * Display the specified resource.
