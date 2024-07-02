@@ -42,7 +42,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/users',[AdminController::class,'viewUsers'])->name('users');
     Route::get('/responders',[ResponderController::class,'index'])->name('responders');
     Route::get('/organizations',[OrganizationController::class,'viewOrganizations'])->name('organizations');
+    Route::get('/organizations/{id}',[OrganizationController::class,'viewOrganizationDetails'])->name('view-organization');
     Route::get('/incidents',[IncidentController::class,'index'])->name('incidents');
+    Route::get('/incidents/{id}',[IncidentController::class,'show'])->name('view-incident');
+    Route::get('/incidents/{id}/dispatch',[ResponderController::class,'showOnlineResponders'])->name('dispatch-incident');
 
     Route::get('users/edit-users/{id}', [AdminController::class, 'viewUserInfo'])->name('edit-user');
     Route::put('user/update/{id}', [AdminController::class, 'updateUserInfo'])->name('update-user');

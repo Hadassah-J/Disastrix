@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\IncidentNotification;
 use Illuminate\Http\Request;
 use App\Models\Incident;
 use App\Models\Organization;
+use App\Models\Head;
 
 class IncidentController extends Controller
 {
@@ -43,6 +45,7 @@ class IncidentController extends Controller
             'location'=> $request['location'],
             'time'=> $request['time'],
             'status' => 'pending',
+
         ]);
 
         return redirect()->route('incident.view',$incident->id);
@@ -87,12 +90,14 @@ class IncidentController extends Controller
            $dist = acos($dist);
            $dist = rad2deg($dist);
            $distance = $dist * 60 * 1.1515 * 1.609344; // distance in kilometers
-       
+
            // Store distance
            $distances[$organization->id] = $distance;
            asort($distances);
            $nearestOrganizationId = key($distances);
            $nearestOrganization = Organization::findOrFail($nearestOrganizationId);
+           $head=Head::where('organization',$nearestOrganization->organization_name)->first();
+           $head->notify(new IncidentNotification($incident));
        }
 
           return view('deploy.emergency-progress',compact('incident'),compact('nearestOrganization'));
@@ -100,13 +105,14 @@ class IncidentController extends Controller
 
 
 
-    
+
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        //
+        $incident=Incident::findorFail($id);
+        return view('deploy.view-incident',compact('incident'));
     }
 
     /**
@@ -116,6 +122,8 @@ class IncidentController extends Controller
     {
         //
     }
+
+
 
     /**
      * Update the specified resource in storage.

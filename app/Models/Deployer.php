@@ -10,7 +10,7 @@ class Deployer extends Model
     use HasFactory;
 
     protected $fillable=[
-        'user_id',
+        'responder_id',
         'incident_id'
     ];
 }

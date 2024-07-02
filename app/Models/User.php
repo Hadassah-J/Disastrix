@@ -80,10 +80,5 @@ class User extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public function isOnline()
-{
-    $lastSeen = $this->last_seen;
-    
-    return $lastSeen && $lastSeen->gt(now()->subMinutes(5));
-}
+
 }
