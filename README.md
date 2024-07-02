@@ -28,6 +28,21 @@ Before setting up and installing the project in your local storage, you must hav
 ```
 git clone https://github.com/Gendi-kinji/disastrix.git
 ```
+- You then update the .env file to include your database details.
+```
+DB_CONNECTION=sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=
+```
+- Afterwards, you run the database migrations to include the database tables that would be needed for the application.
+```
+php artisan migrate
+``` 
+
+
 - You then run the command to start the Laravel application:
 ```
 php artisan serve
@@ -317,7 +332,7 @@ php artisan serve
 ```
 ## Questions
 If there are any inquiries, please contact us via:
-- GitHub: [@George Fundi](https://github.com/Gendi-kinji) and [@Hadassah Jimgun](https://github.com/Hadassah-J)
+- GitHub: [George Fundi](https://github.com/Gendi-kinji) and [Hadassah Jimgun](https://github.com/Hadassah-J)
   
 
 ## License
