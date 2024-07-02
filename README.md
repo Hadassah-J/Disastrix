@@ -332,7 +332,7 @@ php artisan serve
 ```
 ## Questions
 If there are any inquiries, please contact us via:
-- GitHub: [@George Fundi](https://github.com/Gendi-kinji) and [@Hadassah Jimgun](https://github.com/Hadassah-J)
+- GitHub: [George Fundi](https://github.com/Gendi-kinji) and [Hadassah Jimgun](https://github.com/Hadassah-J)
   
 
 ## License
