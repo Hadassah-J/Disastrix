@@ -47,4 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::get('users/edit-users/{id}', [AdminController::class, 'viewUserInfo'])->name('edit-user');
     Route::put('user/update/{id}', [AdminController::class, 'updateUserInfo'])->name('update-user');
 });
+Route::get('/respondents', 'RespondentController@index');
+Route::post('/respondents/call', 'RespondentController@call');
+Route::post('/respondents/text', 'RespondentController@text');
+
+Route::get('/dispatch', 'DispatchController@index');
+Route::post('/dispatch/handle', 'DispatchController@handle');
+Route::post('/dispatch/record', 'DispatchController@record');
 
