@@ -39,7 +39,7 @@ class RolesandPermissionsSeeder extends Seeder
         $editor->givePermissionTo('edit incidents');
 
         // Writer role
-        $writer = Role::create(['name' => 'respondents']);
+        $writer = Role::create(['name' => 'responder']);
         $writer->givePermissionTo('edit incidents');
     }
 }

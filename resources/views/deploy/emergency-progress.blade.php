@@ -6,9 +6,11 @@
 
         <x-validation-errors class="mb-4" />
 
+        <div class="ms-3">
         <div id="map" style="height: 400px; width:full;"></div>
+        </div>
 
-        
+
 
         <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/maps/maps-web.min.js"></script>
         <script src="https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.14.0/services/services-web.min.js"></script>
@@ -38,7 +40,7 @@
         key: 'RjAqQpQ9rqBdykGlcbflQi1JwNOpVAtw',
         locations: [startCoordinates, incidentCoordinates]
       })
-      
+
       .then(function (routeData) {
         var geojson = routeData.toGeoJson();
 

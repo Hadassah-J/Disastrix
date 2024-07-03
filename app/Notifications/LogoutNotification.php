@@ -28,7 +28,7 @@ class LogoutNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -50,6 +50,7 @@ class LogoutNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'message' => 'An authenticated user has logged out',
             'name' => $this->user->name,
             'email' => $this->user->email,
         ];
