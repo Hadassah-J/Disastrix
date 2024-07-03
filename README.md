@@ -22,20 +22,32 @@ Before setting up and installing the project in your local storage, you must hav
 
 - **Visual Studio Code** - A code editor that supports multiple programming languages. It can be installed in the [Visual Studio Code website](https://code.visualstudio.com).
 - **Apache XAMPP server** - A web server that assists in connection to the database through MariaDB. It can be installed [here](https://www.apachefriends.org).
+- **Postmark** - An email server that aids in sending emails within the application. You can get is API key [here](https://postmarkapp.com)
 
 ### Project setup
 - Once you have the required software programs, you first clone the project to your desired repository using the command:
 ```
 git clone https://github.com/Gendi-kinji/disastrix.git
 ```
-- You then update the .env file to include your database details.
+- You then update the .env file to include your database details and email credentials.
 ```
 DB_CONNECTION=sqlite
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=root
-DB_PASSWORD=
+DB_DATABASE=NAME OF YOUR DATABASE
+DB_USERNAME=YOUR USERNAME
+DB_PASSWORD=YOUR PASSWORD
+```
+```
+MAIL_MAILER=postmark
+MAIL_HOST=smtp.postmarkapp.com
+MAIL_PORT=2525
+MAIL_USERNAME=YOUR API KEY
+MAIL_PASSWORD=YOUR API KEY
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=YOUR EMAIL ADDRESS
+MAIL_FROM_NAME="${APP_NAME}"
+
 ```
 - Afterwards, you run the database migrations to include the database tables that would be needed for the application.
 ```

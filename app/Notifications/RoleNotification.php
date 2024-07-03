@@ -28,7 +28,7 @@ class RoleNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -50,8 +50,9 @@ class RoleNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'message'=> 'Your role has been changed to'.$this->role,
             'role_name'=>$this->role->name,
-            ''
+            
         ];
     }
 }

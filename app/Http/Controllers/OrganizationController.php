@@ -34,7 +34,7 @@ class OrganizationController extends Controller
 
         ]);
 
-        return redirect('/')->with('success','Organization successfully added');
+        return redirect('/organizations')->with('success','Organization successfully added');
 
 
     }

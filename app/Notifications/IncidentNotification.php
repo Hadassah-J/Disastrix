@@ -28,7 +28,7 @@ class IncidentNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail','database'];
+        return ['database'];
     }
 
     /**
@@ -50,6 +50,7 @@ class IncidentNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'message' => 'You have been dispatched to incident,'.$this->incident->id,
             'incident_id'=>$this->incident->id,
             'incident_location'=>$this->incident->location,
 

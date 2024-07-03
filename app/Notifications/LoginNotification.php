@@ -27,7 +27,7 @@ class LoginNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -49,6 +49,7 @@ class LoginNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
+            'message'=>'A user has logged in',
             'name' => $this->user->name,
             'email' => $this->user->email,
         ];

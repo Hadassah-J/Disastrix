@@ -15,13 +15,13 @@
                     
 
                       <h5 class="mt-4 text-lg font-semibold">Online Responders:</h5>
-                            <form action="" method="POST">
+                            <form action="{{route('incident-send',['id'=>$incident->id])}}" method="POST">
                                 @csrf
                                 <div class="mb-2">
                                     @foreach ($responders as $responder)
                                         <div>
                                             <input type="checkbox" name="responders[]" value="{{ $responder->id }}">
-                                            <label>{{ $responder->name }}</label>
+                                            <p>{{ $responder->name }}</p>
                                         </div>
                                     @endforeach
                                 </div>

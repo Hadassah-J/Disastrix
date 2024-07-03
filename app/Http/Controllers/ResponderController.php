@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Incident;
 use App\Models\Deployer;
 use App\Models\Deployment;
+use App\Models\Organization;
 use App\Notifications\DispatchNotification;
+use Illuminate\Support\Facades\Notification;
 
 class ResponderController extends Controller
 {
@@ -42,6 +44,7 @@ class ResponderController extends Controller
         //
     }
     public function showOnlineResponders($id){
+        $incident=Incident::findOrFail($id);
         $head = Head::where('user_id', Auth::user()->id)->first();
         if ($head) {
             $organization = $head->organization;
@@ -50,7 +53,7 @@ class ResponderController extends Controller
             // Handle the case where the authenticated user is not a head of any organization
             $responders = collect();
         }
-        return view('organization.dispatch-responders',compact('responders'));
+        return view('organization.dispatch-responders',compact('responders'),compact('incident'));
     }
 
     public function dispatchResponders(Request $request,$id){
@@ -61,24 +64,24 @@ class ResponderController extends Controller
               'responder_id' => $responder,
               'incident_id'=>$id
            ]);
-           $responderperson=Responder::where('id',$responder);
+           $responderperson=Responder::where('id',$responder)->first();
            $responderperson->status='dispatched';
            $responderperson->save();
-           $responderperson->notify(new DispatchNotification($incident));
+           Notification::send($responderperson,new DispatchNotification($incident));
 
-          
-        }
+        $organization=$responderperson->organization;
+        
         $deployment=Deployment::create([
             'incident_id' => $id,
-            'response_organization'=>Responder::where('id',$responder)->organization,
+            'response_organization'=>$organization,
             'time_responded'=>now(),
             'deployment_force_number' => count($responders),
          ]);
         
         $incident->status="solved";
         $incident->save();
-
-    }
+        return redirect('/responders')->with('message','Successfully dispatched');
+    }}
     /**
      * Display the specified resource.
      */
