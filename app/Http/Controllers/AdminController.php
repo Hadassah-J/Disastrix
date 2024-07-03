@@ -111,6 +111,7 @@ class AdminController extends Controller
     }else if($request['roles']=='responder'){
         $responder=Responder::create([
             'user_id'=> $user->id,
+            'organization'=> NULL,
         ]);
 
     }

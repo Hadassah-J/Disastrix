@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Incident;
 use App\Models\Organization;
 use App\Models\Head;
+use App\Models\User;
+use Illuminate\Support\Facades\Notification;
 
 class IncidentController extends Controller
 {
@@ -97,7 +99,9 @@ class IncidentController extends Controller
            $nearestOrganizationId = key($distances);
            $nearestOrganization = Organization::findOrFail($nearestOrganizationId);
            $head=Head::where('organization',$nearestOrganization->organization_name)->first();
-           $head->notify(new IncidentNotification($incident));
+           $user=User::where('id',$head->user_id)->first();
+
+           Notification::send($user,new IncidentNotification($incident));
        }
 
           return view('deploy.emergency-progress',compact('incident'),compact('nearestOrganization'));

@@ -23,7 +23,7 @@
                         <strong>Date:</strong> {{ $incident->time_of_incident}}
                     </div>
                     <div class="mb-4">
-                        <strong>Status:</strong> {{ $incident->status }}
+                        <strong>Status:</strong> <span class="bg-red-200 border-red-100 border rounded-lg p-2 text-red-700 hover:text-white">{{ $incident->status }}</span>
                     </div>
                     @if(Auth::user()->role_id==3)
                     <div class="mt-6">

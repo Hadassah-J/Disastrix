@@ -6,7 +6,7 @@
 
         <x-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('organizations/add') }}">
+        <form method="POST" action="{{ route('organizations-add') }}">
             @csrf
 
             <div>

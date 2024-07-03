@@ -5,8 +5,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ResponderController;
 use App\Http\Controllers\IncidentController;
+use App\Http\Controllers\StatisticsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LockScreenController;
 use App\Http\Middleware\LockMiddleware;
 Route::get('/', function () {
@@ -19,13 +21,17 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        $user=Auth::user();
+        if($user->role_id==2){
+            return redirect()->route('calculate-statistics');
+        }else{
+        return view('dashboard');}
     })->name('dashboard')->middleware((LockMiddleware::class));
 });
 Route::get('/lock', [LockScreenController::class, 'show'])->name('lock');
 Route::post('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
-Route::get('/organizations/register', [OrganizationController::class, 'view'])->name('organizations/register');
-Route::post('/organizations/add',[OrganizationController::class,'addOrganization'])->name('organizations/add');
+Route::get('/organizations/register', [OrganizationController::class, 'view'])->name('organizations-register');
+Route::post('/organizations/add',[OrganizationController::class,'addOrganization'])->name('organizations-add');
 
 
 Route::get('/admin/add',[AdminController::class,'adminRegister'])->name('admin-register');
@@ -37,6 +43,7 @@ Route::get('/incident/view/{id}',[IncidentController::class,'viewIncident'])->na
 
 
 Route::middleware('auth')->group(function () {
+    Route::get('/admin/dashboard',[StatisticsController::class,'calculateStatistics'])->name('calculate-statistics');
     Route::get('/admin', [AdminController::class, 'show']);
     Route::get('/admins',[AdminController::class, 'viewAdmins'])->name('admins');
     Route::get('/users',[AdminController::class,'viewUsers'])->name('users');
@@ -46,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/incidents',[IncidentController::class,'index'])->name('incidents');
     Route::get('/incidents/{id}',[IncidentController::class,'show'])->name('view-incident');
     Route::get('/incidents/{id}/dispatch',[ResponderController::class,'showOnlineResponders'])->name('dispatch-incident');
+    Route::post('/incidents/{id}/send',[ResponderController::class,'dispatchResponders'])->name('incident-send');
+    Route::get('/notifications',[NotificationController::class,'index'])->name('notifications.index');
 
     Route::get('users/edit-users/{id}', [AdminController::class, 'viewUserInfo'])->name('edit-user');
     Route::put('user/update/{id}', [AdminController::class, 'updateUserInfo'])->name('update-user');
