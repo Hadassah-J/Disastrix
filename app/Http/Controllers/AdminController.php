@@ -12,6 +12,8 @@ use App\Models\Head;
 use App\Models\Responder;
 use App\Notifications\RoleNotification;
 
+use Illuminate\Support\Facades\Notification;
+
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Hash;
@@ -46,7 +48,9 @@ class AdminController extends Controller
     }
     public function viewUsers(){
 
-        return view('admin.show-users', ['users' => $this->users],['roles' => $this->roles]);
+
+
+        return view('admin.show-users', ['users' => $this->users,'admincount' => $this->admincount,'organization_headcount'=>$this->organization_headcount],['roles' => $this->roles]);
     }
     public function viewAdmins(){
         return view('admin.show-admins',['users'=>$this->users],['admins'=> $this->admins]);
@@ -88,7 +92,7 @@ class AdminController extends Controller
             $user->syncRoles([$role]);
         }
         $user->save();
-        $user->notify(new RoleNotification($role));
+        Notification::send($user,new RoleNotification($role));
 
         if($request['roles']=='admin'){
 

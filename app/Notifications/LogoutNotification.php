@@ -7,18 +7,18 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RoleNotification extends Notification
+class LogoutNotification extends Notification
 {
     use Queueable;
-    protected $role;
+
+    protected $user;
 
     /**
      * Create a new notification instance.
      */
-    public function __construct($role)
+    public function __construct($user)
     {
-        $this->role=$role;
-
+        $this->user = $user;
     }
 
     /**
@@ -37,8 +37,8 @@ class RoleNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('You have been assigned a new role,'.$this->role)
-                    ->action('Please login again', url('/login'))
+                    ->line('A user has logged out')
+                    ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
     }
 
@@ -50,8 +50,8 @@ class RoleNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'role_name'=>$this->role->name,
-            ''
+            'name' => $this->user->name,
+            'email' => $this->user->email,
         ];
     }
 }
