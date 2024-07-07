@@ -1,5 +1,3 @@
-//import './bootstrap';
-
 document.addEventListener('DOMContentLoaded', function () {
     // Check for inactivity - no mouse movement, keyboard input, touch input, page reload
     let inactivityTime = function () {

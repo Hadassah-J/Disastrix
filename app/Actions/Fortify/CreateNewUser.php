@@ -25,21 +25,20 @@ class CreateNewUser implements CreatesNewUsers
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
-
-        //$role=Role::create(['name'=>'Public user']);
-        $role=Role::findByName('Public user');
-
-
+        
+        // Find or create the role
+        $role = Role::firstOrCreate(['name' => 'Public user']);
+        
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'role_id' => $role->id,
             'password' => Hash::make($input['password']),
         ]);
+        
 
 
 
