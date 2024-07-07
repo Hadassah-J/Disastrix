@@ -10,6 +10,8 @@ class Head extends Model
 {
     use HasFactory,Notifiable;
 
+    
+
     protected $fillable=[
         'user_id',
         'organization',

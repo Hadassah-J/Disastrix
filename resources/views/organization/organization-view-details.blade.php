@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-2xl font-semibold mb-4">Organization #{{ $organization->id }}</h3>
                     <div class="mb-4">
-                        <strong>Title:</strong> {{ $organization->organization_name}}
+                        <strong>Name:</strong> {{ $organization->organization_name}}
                     </div>
 
                     <div class="mb-4">

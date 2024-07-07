@@ -6,8 +6,12 @@
 
         <x-validation-errors class="mb-4" />
 
-        <div class="ms-3">
+        <div class="ms-3 w-full ">
         <div id="map" style="height: 400px; width:full;"></div>
+        </div>
+
+        <div id="time" class="ms-3">
+
         </div>
 
 
@@ -67,6 +71,7 @@
 
         console.log('Distance: ' + distance + ' meters');
         console.log('Travel Time: ' + travelTime + ' seconds');
+        document.getElementById('time').innerHTML =`<p>It will take${Math.floor(travelTime/60)}minutes to arrive at the destination</p>`;
       })
       .catch(function (error) {
         console.error('Error calculating route:', error);
@@ -77,6 +82,8 @@
       addMarkers();
       calculateAndDisplayRoute();
     });
+
+
         </script>
     </x-authentication-card>
 </x-guest-layout>

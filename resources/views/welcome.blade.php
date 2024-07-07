@@ -17,7 +17,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="bg-gray-50 text-black/50">
-            <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="D:\Downloads\Original_gotei_13_poster.jpg" />
+            <img id="background" class="absolute -left-20 top-0 max-w-[877px]" src="" />
             <div class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                 <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                     <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
@@ -90,10 +90,10 @@
                                         </div>
 
                                         <div class="pt-3 sm:pt-5 lg:pt-0">
-                                            <h2 class="text-xl font-semibold text-black">Documentation</h2>
+                                            <h2 class="text-xl font-semibold text-black">   Welcome to Disastrix: Your Emergency Service Companion in Kenya</h2>
 
                                             <p class="mt-4 text-sm/relaxed">
-                                                Laravel has wonderful documentation covering every aspect of the framework. Whether you are a newcomer or have prior experience with Laravel, we recommend reading our documentation from beginning to end.
+                                            Disastrix is your gateway to seamless access to emergency services across Kenya. Whether you require police, fire, medical assistance, or other emergency services, Disastrix ensures prompt and efficient help tailored to your specific needs.
                                             </p>
                                         </div>
                                     </div>
@@ -111,10 +111,10 @@
                                 </div>
 
                                 <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black">Laracasts</h2>
+                                    <h2 class="text-xl font-semibold text-black">Efficient Emergency Handling Platform</h2>
 
                                     <p class="mt-4 text-sm/relaxed">
-                                        Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                                    Disastrix offers a robust platform to handle various emergency situations efficiently. Users can swiftly report emergencies, providing vital details to dispatchers and responders. This streamlined communication enhances the effectiveness of emergency services, empowering individuals to act decisively during critical moments.
                                     </p>
                                 </div>
 
@@ -130,10 +130,10 @@
                                 </div>
 
                                 <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black">Laravel News</h2>
+                                    <h2 class="text-xl font-semibold text-black">Comprehensive Resource Center for Safety and Preparedness</h2>
 
                                     <p class="mt-4 text-sm/relaxed">
-                                        Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
+                                    Disastrix serves as more than just an emergency link—it's a comprehensive resource center. Offering safety tips, emergency preparedness guidelines, and real-time updates during crises, Disastrix is your reliable ally in safeguarding communities across Kenya. Partnering with local authorities and service providers, we're committed to improving emergency response and making safety a priority with every interaction.
                                     </p>
                                 </div>
 
@@ -152,10 +152,10 @@
                                 </div>
 
                                 <div class="pt-3 sm:pt-5">
-                                    <h2 class="text-xl font-semibold text-black">Vibrant Ecosystem</h2>
+                                    <h2 class="text-xl font-semibold text-black"> Our Commitment to Innovation and Impact</h2>
 
                                     <p class="mt-4 text-sm/relaxed">
-                                        Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Forge</a>, <a href="https://vapor.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Vapor</a>, <a href="https://nova.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Nova</a>, <a href="https://envoyer.io" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Envoyer</a>, and <a href="https://herd.laravel.com" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Herd</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Echo</a>, <a href="https://laravel.com/docs/horizon" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="rounded-sm underline hover:text-black focus:outline-none focus-visible:ring-1 focus-visible:ring-[#FF2D20]">Telescope</a>, and more.
+                                    Disastrix embodies a commitment to leveraging technology for the greater good, ensuring that emergency services are accessible and efficient. Our continuous improvement initiatives focus on enhancing user experience and expanding service capabilities. With a dedicated team of professionals and partners, Disastrix remains at the forefront of emergency management innovation, striving to make a positive impact on the lives of individuals and communities in Kenya. Join us in embracing safety and preparedness with Disastrix, where every action contributes to a safer and more responsive emergency ecosystem.
                                     </p>
                                 </div>
                             </div>

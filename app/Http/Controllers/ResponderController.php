@@ -46,14 +46,17 @@ class ResponderController extends Controller
     public function showOnlineResponders($id){
         $incident=Incident::findOrFail($id);
         $head = Head::where('user_id', Auth::user()->id)->first();
+        $users=collect();
         if ($head) {
             $organization = $head->organization;
             $responders = Responder::where('organization', $organization)->get();
+            $userIds = $responders->pluck('user_id'); // Collect all user IDs
+            $users = User::whereIn('id', $userIds)->get()->keyBy('id');
         } else {
             // Handle the case where the authenticated user is not a head of any organization
             $responders = collect();
         }
-        return view('organization.dispatch-responders',compact('responders'),compact('incident'));
+        return view('organization.dispatch-responders',compact('responders','incident','users'));
     }
 
     public function dispatchResponders(Request $request,$id){
@@ -67,17 +70,18 @@ class ResponderController extends Controller
            $responderperson=Responder::where('id',$responder)->first();
            $responderperson->status='dispatched';
            $responderperson->save();
+           $userresponder=User::where('id',$responderperson->user_id)->first();
            Notification::send($responderperson,new DispatchNotification($incident));
 
         $organization=$responderperson->organization;
-        
+
         $deployment=Deployment::create([
             'incident_id' => $id,
             'response_organization'=>$organization,
             'time_responded'=>now(),
             'deployment_force_number' => count($responders),
          ]);
-        
+
         $incident->status="solved";
         $incident->save();
         return redirect('/responders')->with('message','Successfully dispatched');

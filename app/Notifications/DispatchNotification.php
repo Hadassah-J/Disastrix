@@ -49,7 +49,7 @@ class DispatchNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message' =>'You are dispatched to this incident'.$this->incident->id
+            'message' =>'You are dispatched to incident '.$this->incident->id.' at location '.$this->incident->location,
             //
         ];
     }
