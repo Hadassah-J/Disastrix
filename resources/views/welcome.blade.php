@@ -113,53 +113,57 @@
         class="absolute -bottom-16 -left-16 h-40 w-[calc(100%+8rem)] bg-gradient-to-b from-transparent via-white to-white"
     ></div>
 </div>
+<div class="invisible-box flex flex-col lg:flex-row lg:gap-6 items-start lg:items-center">
+    <!-- Image Section as Vertical Bar -->
+    <div class="lg:w-1/3 flex items-center justify-center gap-6">
+        <!-- Placeholder for the removed image -->
+    </div>
 
-
-<div class="flex flex-col lg:flex-row gap-6 items-start lg:items-center">
-    <div id="docs-card-content" class="lg:w-1/2 flex items-center gap-6">
-        <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-            <!-- SVG or image can be added here if needed -->
-        </div>
-
+    <!-- Content Section Encased in Invisible Box -->
+    <div class="lg:w-2/3 invisible-box">
         <div class="pt-3 sm:pt-5 mx-auto lg:mx-0">
-        <div class="text-center">
-    <h1 class="text-4xl font-semibold" style="color: #191970;">Disastrix</h1>
-</div>
+            <div class="text-center">
+                <h1 class="text-4xl font-semibold" style="color: #191970;">Disastrix</h1>
+            </div>
 
-<div class="bg-transparent p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] md:row-span-3 lg:p-10 lg:pb-10 text-center">
-    <h2 class="text-2xl font-semibold" style="color: #191970;font-size: 24px">Welcome to Disastrix: Your Emergency Service Companion in Kenya</h2>
-    <p class="mt-4 text-base/relaxed" style="color:#82BFFF; font-size: 18px;">
-        Welcome to Disastrix, your trusted portal for seamless access to emergency services across Kenya. Our platform is meticulously designed to ensure that whether you need police, fire, medical assistance, or any other emergency service, swift and efficient help is just a few clicks away. At Disastrix, your safety and peace of mind are our top priorities. We offer tailored solutions to meet your specific needs, guaranteeing that in times of crisis, help arrives promptly and effectively, minimizing risks and ensuring timely intervention. Our dedication extends to enhancing community safety through a streamlined interface that directly connects you to essential services, ensuring emergencies are handled urgently and with care. Join us in revolutionizing emergency response in Kenya with Disastrix, where your safety is our foremost concern.
-    </p>
-</div>
+            <div class="bg-transparent p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-black/70 hover:ring-black/20 focus:outline-none focus-visible:ring-[#FF2D20] md:row-span-3 lg:p-10 lg:pb-10 text-center">
+                <h2 class="text-2xl font-semibold" style="color: #191970; font-size: 24px;">Welcome to Disastrix: Your Emergency Service Companion in Kenya</h2>
+                <p class="mt-4 text-base/relaxed" style="color:#82BFFF; font-size: 16px;">
+                    Welcome to Disastrix, your trusted portal for seamless access to emergency services across Kenya. Our platform is meticulously designed to ensure that whether you need police, fire, medical assistance, or any other emergency service, swift and efficient help is just a few clicks away. At Disastrix, your safety and peace of mind are our top priorities. We offer tailored solutions to meet your specific needs, guaranteeing that in times of crisis, help arrives promptly and effectively, minimizing risks and ensuring timely intervention. Our dedication extends to enhancing community safety through a streamlined interface that directly connects you to essential services, ensuring emergencies are handled urgently and with care. Join us in revolutionizing emergency response in Kenya with Disastrix, where your safety is our foremost concern.
+                </p>
+            </div>
 
-<div class="flex lg:flex-col lg:w-1/2 gap-6">
-    <div class="flex-1 flex items-start gap-4 rounded-lg bg-transparent p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-blue-500 hover:ring-blue-200 focus:outline-none focus-visible:ring-blue-400">
-        <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-            <!-- SVG or image can be added here if needed -->
-        </div>
-        <div>
-            <h2 class="text-xl font-semibold" style="color: #191970; font-size: 24px;">Efficient Emergency Handling Platform</h2>
-            <p class="mt-4 text-base/relaxed" style="color: #82BFFF; font-size: 18px;">
-                Disastrix boasts a resilient and versatile platform engineered to manage a wide range of emergency scenarios with maximum efficiency. Through Disastrix, users can swiftly report emergencies, ensuring vital details reach dispatchers and responders without delay. This streamlined communication not only accelerates response times but also enhances the overall effectiveness of emergency services. By empowering individuals to relay critical information decisively during crises, Disastrix facilitates proactive and well-informed actions that can significantly influence outcomes in emergency situations.
-            </p>
+            <div class="flex lg:flex-col lg:w-full gap-6">
+                <div class="flex-1 flex items-start gap-4 rounded-lg bg-transparent p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-blue-500 hover:ring-blue-200 focus:outline-none focus-visible:ring-blue-400">
+                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
+                        <!-- Placeholder or alternative content can be added here -->
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold" style="color: #191970; font-size: 24px;">Efficient Emergency Handling Platform</h2>
+                        <p class="mt-4 text-base/relaxed" style="color: #82BFFF; font-size: 18px;">
+                            Disastrix boasts a resilient and versatile platform engineered to manage a wide range of emergency scenarios with maximum efficiency. Through Disastrix, users can swiftly report emergencies, ensuring vital details reach dispatchers and responders without delay. This streamlined communication not only accelerates response times but also enhances the overall effectiveness of emergency services. By empowering individuals to relay critical information decisively during crises, Disastrix facilitates proactive and well-informed actions that can significantly influence outcomes in emergency situations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex-1 flex items-start gap-4 rounded-lg bg-transparent p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-blue-500 hover:ring-blue-200 focus:outline-none focus-visible:ring-blue-400">
+                    <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
+                        <!-- Placeholder or alternative content can be added here -->
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-semibold" style="color: #191970; font-size: 24px;">Comprehensive Resource Center for Safety and Preparedness</h2>
+                        <p class="mt-4 text-base/relaxed" style="color:#82BFFF; font-size: 18px;">
+                            Disastrix transcends its role as a simple emergency link to become a comprehensive resource center for safety and preparedness. Beyond facilitating immediate emergency responses, Disastrix provides invaluable safety tips, emergency preparedness guidelines, and real-time updates during crises. As your dependable ally in safeguarding communities across Kenya, we partner closely with local authorities and service providers to continuously enhance emergency response and preparedness. Our commitment ensures that Disastrix remains at the forefront of promoting safety and resilience, empowering individuals and communities to navigate emergencies with confidence.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="flex-1 flex items-start gap-4 rounded-lg bg-transparent p-6 shadow-[0px_14px_34px_0px_rgba(0,0,0,0.08)] ring-1 ring-white/[0.05] transition duration-300 hover:text-blue-500 hover:ring-blue-200 focus:outline-none focus-visible:ring-blue-400">
-        <div class="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FF2D20]/10 sm:size-16">
-            <!-- SVG or image can be added here if needed -->
-        </div>
-        <div>
-            <h2 class="text-xl font-semibold" style="color: #191970; font-size: 24px;">Comprehensive Resource Center for Safety and Preparedness</h2>
-            <p class="mt-4 text-base/relaxed" style="color:#82BFFF; font-size: 18px;">
-                Disastrix transcends its role as a simple emergency link to become a comprehensive resource center for safety and preparedness. Beyond facilitating immediate emergency responses, Disastrix provides invaluable safety tips, emergency preparedness guidelines, and real-time updates during crises. As your dependable ally in safeguarding communities across Kenya, we partner closely with local authorities and service providers to continuously enhance emergency response and preparedness. Our commitment ensures that Disastrix remains at the forefront of promoting safety and resilience, empowering individuals and communities to navigate emergencies with confidence.
-            </p>
-        </div>
-    </div>
 </div>
 
-</div>
+
+
 
 
                  

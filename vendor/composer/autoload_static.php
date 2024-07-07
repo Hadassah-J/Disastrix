@@ -626,6 +626,7 @@ class ComposerStaticInitf97ec51d4acb5e2a8155799596cedfc3
         'App\\Http\\Controllers\\LockScreenController' => __DIR__ . '/../..' . '/app/Http/Controllers/LockScreenController.php',
         'App\\Http\\Controllers\\NotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/NotificationController.php',
         'App\\Http\\Controllers\\OrganizationController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrganizationController.php',
+        'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
         'App\\Http\\Controllers\\RespondentController' => __DIR__ . '/../..' . '/app/Http/Controllers/RespondentController.php',
         'App\\Http\\Controllers\\ResponderController' => __DIR__ . '/../..' . '/app/Http/Controllers/ResponderController.php',
         'App\\Http\\Controllers\\RoleController' => __DIR__ . '/../..' . '/app/Http/Controllers/RoleController.php',
