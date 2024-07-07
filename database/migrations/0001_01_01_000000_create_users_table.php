@@ -49,6 +49,7 @@ return new class extends Migration
             //$table->integer('role_id');
             $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade'); // Adjusted to reference roles table
             $table->string('password');
+            $table->boolean('is_online')->nullable();
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable(); // Adjusted constraint
             $table->string('profile_photo_path', 2048)->nullable();

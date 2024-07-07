@@ -42,6 +42,7 @@ Route::post('/incident/show',[IncidentController::class,'store'])->name('inciden
 Route::get('/incident/view/{id}',[IncidentController::class,'viewIncident'])->name('incident.view');
 
 
+
 Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard',[StatisticsController::class,'calculateStatistics'])->name('calculate-statistics');
     Route::get('/admin', [AdminController::class, 'show']);
@@ -66,4 +67,10 @@ Route::post('/respondents/text', 'RespondentController@text');
 Route::get('/dispatch', 'DispatchController@index');
 Route::post('/dispatch/handle', 'DispatchController@handle');
 Route::post('/dispatch/record', 'DispatchController@record');
+Route::get('/about-us', function () {
+    return view('about_us');
+})->name('about_us');
+Route::get('/', function () {
+    return view('welcome');
+});
 
