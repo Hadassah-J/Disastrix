@@ -81,3 +81,7 @@ use App\Http\Controllers\RegisterController;
 Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
+// routes/web.php
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

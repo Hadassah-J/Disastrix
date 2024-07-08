@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -39,12 +40,14 @@ class RegisterController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role_id' => 1, // Replace with the appropriate role ID
+
         ]);
 
         // Log the user in after registration (optional)
-        // Auth::login($user);
+        Auth::login($user);
 
         // Redirect to a specific route or page after registration
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 }

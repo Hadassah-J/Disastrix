@@ -4,25 +4,33 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
+class AddLastSeenToUsersTable extends Migration
 {
     /**
      * Run the migrations.
+     *
+     * @return void
      */
-    public function up(): void
+    public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_online')->default(false);
+            if (!Schema::hasColumn('users', 'is_online')) {
+                $table->boolean('is_online')->default(0);
+            }
+            // Add other columns if needed
         });
     }
 
     /**
      * Reverse the migrations.
+     *
+     * @return void
      */
-    public function down(): void
+    public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('last_seen');
+            $table->dropColumn('is_online');
+            // Drop other columns if needed
         });
     }
-};
+}

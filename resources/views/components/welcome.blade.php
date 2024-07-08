@@ -1,80 +1,96 @@
-<div class="p-6 lg:p-8 bg-white border-b border-gray-200">
-    <x-application-logo class="block h-12 w-auto" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disastrix: Your Emergency Service Companion</title>
+    <style>
+        /* Embedded CSS styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('images/Healthimage.jpg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            min-height: 100vh; /* Ensure full screen coverage */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #333; /* Default text color */
+            background-color: #fff; /* Fallback background color */
+        }
 
-    <h1 class="mt-8 text-2xl font-medium text-gray-900">
-    Welcome to Disastrix: Your Emergency Service Companion in Kenya
-</h1>
+        .invisible-box {
+            background-color: transparent; /* Remove background color */
+        }
 
-<p class="mt-6 text-gray-500 leading-relaxed">
-    Disastrix is your gateway to seamless access to emergency services across Kenya. Whether you require police, fire, medical assistance, or other emergency services, Disastrix ensures prompt and efficient help tailored to your specific needs.
-</p>
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px; /* Adjust gap between cards */
+            max-width: 800px; /* Set maximum width for the grid */
+            margin-top: 20px; /* Add margin for separation */
+        }
 
-</div>
+        .card {
+            background-color: #ffffff; /* White background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+        }
 
-<div class="bg-gray-200 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
-    <div>
-        <div class="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
-            </svg>
-            <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="https://laravel.com/docs">Documentation</a>
-            </h2>
+        .card h2 {
+            color: #191970; /* Heading color */
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .card p {
+            color: #82BFFF; /* Paragraph color */
+            font-size: 18px;
+            line-height: 1.6; /* Adjust line height */
+        }
+    </style>
+</head>
+<body>
+    <div class="invisible-box">
+        <div class="card">
+            <h1 class="text-2xl font-semibold" style="color: #191970; font-size: 24px;">
+                Welcome to Disastrix: Your Emergency Service Companion in Kenya
+            </h1>
+            <p class="mt-4 text-base/relaxed" style="color:#82BFFF; font-size: 18px;">
+                Disastrix is your gateway to seamless access to emergency services across Kenya. Whether you require police, fire, medical assistance, or other emergency services, Disastrix ensures prompt and efficient help tailored to your specific needs.
+            </p>
         </div>
 
-        <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-        Disastrix offers a robust platform to handle various emergency situations efficiently. Users can swiftly report emergencies, providing vital details to dispatchers and responders. This streamlined communication enhances the effectiveness of emergency services, empowering individuals to act decisively during critical moments.
-    </p>
+        <div class="card-container">
+            <div class="card">
+                <!-- First Card -->
+                <h2>Documentation</h2>
+                <p>
+                    Disastrix offers a robust platform to handle various emergency situations efficiently. Users can swiftly report emergencies, providing vital details to dispatchers and responders. This streamlined communication enhances the effectiveness of emergency services, empowering individuals to act decisively during critical moments.
+                </p>
+            </div>
 
-    <p class="mt-4 text-sm">
-        <a href="https://laravel.com/docs" class="inline-flex items-center font-semibold text-indigo-700">
-            Explore the documentation
+            <div class="card">
+                <!-- Second Card -->
+                <h2>Laracasts</h2>
+                <p>
+                    Disastrix serves as more than just an emergency link—it's a comprehensive resource center. Offering safety tips, emergency preparedness guidelines, and real-time updates during crises, Disastrix is your reliable ally in safeguarding communities across Kenya. Partnering with local authorities and service providers, we're committed to improving emergency response and making safety a priority with every interaction.
+                </p>
+            </div>
 
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500">
-                <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-            </svg>
-        </a>
-    </p>
-</div>
-
-<div>
-    <div class="flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-            <path stroke-linecap="round" d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z" />
-        </svg>
-        <h2 class="ms-3 text-xl font-semibold text-gray-900">
-            <a href="https://laracasts.com">Laracasts</a>
-        </h2>
+            <div class="card">
+                <!-- Third Card -->
+                <h2>Our Commitment to Innovation and Impact</h2>
+                <p>
+                    Disastrix embodies a commitment to leveraging technology for the greater good, ensuring that emergency services are accessible and efficient. Our continuous improvement initiatives focus on enhancing user experience and expanding service capabilities. With a dedicated team of professionals and partners, Disastrix remains at the forefront of emergency management innovation, striving to make a positive impact on the lives of individuals and communities in Kenya. Join us in embracing safety and preparedness with Disastrix, where every action contributes to a safer and more responsive emergency ecosystem.
+                </p>
+            </div>
+        </div>
     </div>
-
-    <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-        Disastrix serves as more than just an emergency link—it's a comprehensive resource center. Offering safety tips, emergency preparedness guidelines, and real-time updates during crises, Disastrix is your reliable ally in safeguarding communities across Kenya. Partnering with local authorities and service providers, we're committed to improving emergency response and making safety a priority with every interaction.
-    </p>
-
-    <p class="mt-4 text-sm">
-        <a href="https://laracasts.com" class="inline-flex items-center font-semibold text-indigo-700">
-            Start watching Laracasts
-
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" class="ms-1 w-5 h-5 fill-indigo-500">
-                <path fill-rule="evenodd" d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z" clip-rule="evenodd" />
-            </svg>
-        </a>
-    </p>
-</div>
-
-<div>
-    <div class="flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" class="w-6 h-6 stroke-gray-400">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-        </svg>
-        <h2 class="ms-3 text-xl font-semibold text-gray-900">
-            Our Commitment to Innovation and Impact
-        </h2>
-    </div>
-
-    <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-        Disastrix embodies a commitment to leveraging technology for the greater good, ensuring that emergency services are accessible and efficient. Our continuous improvement initiatives focus on enhancing user experience and expanding service capabilities. With a dedicated team of professionals and partners, Disastrix remains at the forefront of emergency management innovation, striving to make a positive impact on the lives of individuals and communities in Kenya. Join us in embracing safety and preparedness with Disastrix, where every action contributes to a safer and more responsive emergency ecosystem.
-    </p>
-</div>
-
-</div>
+</body>
+</html>
