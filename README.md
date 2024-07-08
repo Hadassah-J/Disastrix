@@ -22,7 +22,7 @@ Before setting up and installing the project in your local storage, you must hav
 
 - **Visual Studio Code** - A code editor that supports multiple programming languages. It can be installed in the [Visual Studio Code website](https://code.visualstudio.com).
 - **Apache XAMPP server** - A web server that assists in connection to the database through MariaDB. It can be installed [here](https://www.apachefriends.org).
-- **Postmark** - An email server that aids in sending emails within the application. You can get is API key [here](https://postmarkapp.com)
+- **Postmark** - An email server that aids in sending emails within the application. You can get its API key [here](https://postmarkapp.com)
 
 ### Project setup
 - Once you have the required software programs, you first clone the project to your desired repository using the command:
