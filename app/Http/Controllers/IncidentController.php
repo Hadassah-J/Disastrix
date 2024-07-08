@@ -99,9 +99,11 @@ class IncidentController extends Controller
            $nearestOrganizationId = key($distances);
            $nearestOrganization = Organization::findOrFail($nearestOrganizationId);
            $head=Head::where('organization',$nearestOrganization->organization_name)->first();
+           if($head){
            $user=User::where('id',$head->user_id)->first();
 
            Notification::send($user,new IncidentNotification($incident));
+           }
        }
 
           return view('deploy.emergency-progress',compact('incident'),compact('nearestOrganization'));

@@ -49,7 +49,7 @@ class LoginNotification extends Notification
     public function toArray(object $notifiable): array
     {
         return [
-            'message'=>'A user has logged in',
+            'message'=>$this->user->name.' has logged in with email '.$this->user->email,
             'name' => $this->user->name,
             'email' => $this->user->email,
         ];
