@@ -13,6 +13,10 @@ export default {
 
     theme: {
         extend: {
+            backgroundImage: {
+                'hero-pattern': "url('/images/Health%20image.jpg')",
+                'footer-texture': "url('/images/Health%20image.jpg')",
+            },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

@@ -20,6 +20,7 @@ return array(
     'App\\Http\\Controllers\\LockScreenController' => $baseDir . '/app/Http/Controllers/LockScreenController.php',
     'App\\Http\\Controllers\\NotificationController' => $baseDir . '/app/Http/Controllers/NotificationController.php',
     'App\\Http\\Controllers\\OrganizationController' => $baseDir . '/app/Http/Controllers/OrganizationController.php',
+    'App\\Http\\Controllers\\RegisterController' => $baseDir . '/app/Http/Controllers/RegisterController.php',
     'App\\Http\\Controllers\\RespondentController' => $baseDir . '/app/Http/Controllers/RespondentController.php',
     'App\\Http\\Controllers\\ResponderController' => $baseDir . '/app/Http/Controllers/ResponderController.php',
     'App\\Http\\Controllers\\RoleController' => $baseDir . '/app/Http/Controllers/RoleController.php',

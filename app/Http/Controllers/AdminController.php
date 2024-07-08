@@ -162,7 +162,8 @@ public function addAdmin(Request $request) {
         return redirect('login')->with('success',201);
 
     }
-}
+    }
+
 
 
 
