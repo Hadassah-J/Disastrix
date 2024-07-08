@@ -1,6 +1,9 @@
 <x-guest-layout>
-    <x-authentication-card>
-       
+
+    <div class="min-h-screen flex justify-center items-center bg-gray-100">
+        
+  <x-authentication-card>
+
         <x-slot name="logo">
             <x-authentication-card-logo />
         </x-slot>
@@ -12,6 +15,31 @@
                 {{ $value }}
             </div>
         @endsession
+
+        <form method="POST" action="{{ route('login') }}">
+
+            @csrf
+
+            <!-- Image Section -->
+            <div class="w-1/3 flex items-center justify-center mb-8 lg:hidden">
+                <img src="/images/login&register.jpg" alt="Login and Register Image" class="w-full max-w-full h-auto rounded-lg shadow-lg">
+            </div>
+
+            <!-- Form Content -->
+            <div class="flex flex-col space-y-6 lg:flex-row lg:space-y-0 lg:space-x-8">
+                <!-- Image Section (visible for lg screens and above) -->
+                <div class="hidden lg:block w-1/3 flex items-center justify-center">
+                    <img src="/images/login&register.jpg" alt="Login and Register Image" class="w-full max-w-full h-auto rounded-lg shadow-lg">
+                </div>
+
+                <!-- Form Fields -->
+                <div class="w-full lg:w-2/3">
+                    <!-- Status Message -->
+                    @session('status')
+                        <div class="mb-4 font-medium text-sm text-green-600">
+                            {{ $value }}
+                        </div>
+                    @endsession
 
                     <!-- Email Field -->
                     <div>
@@ -48,9 +76,9 @@
                 </div>
             </div>
         </form>
+    </div>
+
     </x-authentication-card>
-    <script>
-    document.body.style.backgroundImage = "url('/images/Emergency.jpg')";
-    document.body.style.backgroundSize = "cover";
-</script>
+    
+
 </x-guest-layout>
