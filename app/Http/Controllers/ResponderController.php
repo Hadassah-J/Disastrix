@@ -71,7 +71,7 @@ class ResponderController extends Controller
            $responderperson->status='dispatched';
            $responderperson->save();
            $userresponder=User::where('id',$responderperson->user_id)->first();
-           Notification::send($responderperson,new DispatchNotification($incident));
+           Notification::send($userresponder,new DispatchNotification($incident));
 
         $organization=$responderperson->organization;
 
