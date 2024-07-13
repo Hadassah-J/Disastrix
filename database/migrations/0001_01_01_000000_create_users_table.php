@@ -45,6 +45,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('secondary_email');
             $table->timestamp('email_verified_at')->nullable();
             //$table->integer('role_id');
             $table->foreignId('role_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade'); // Adjusted to reference roles table
@@ -121,6 +122,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->string('organization');
             $table->foreign('organization')->references('organization_name')->on('organizations')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('status')->default('available');
             $table->timestamp('last_activity')->nullable();
             $table->timestamps();
         });
@@ -147,6 +149,7 @@ return new class extends Migration
             $table->string('latitude');
             $table->string('longitude');
             $table->string('status');
+            $table->boolean('notification_sent')->nullable();
         });
         Schema::create('deployers', function (Blueprint $table) {
             $table->id();
