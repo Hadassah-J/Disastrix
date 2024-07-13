@@ -13,6 +13,9 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                'ral-7016': '#383E42', // This is the hex code for RAL 7016
+            },
             backgroundImage: {
                 'hero-pattern': "url('/images/Health%20image.jpg')",
                 'footer-texture': "url('/images/Health%20image.jpg')",
