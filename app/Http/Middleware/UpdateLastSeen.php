@@ -17,9 +17,13 @@ class UpdateLastSeen
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::check() ) {
+        if (Auth::check()) {
             Auth::user()->update(['last_seen' => now()]);
+        } else {
+            // Handle the case where user is not authenticated
+            return redirect('/login'); // Redirect to login page or handle accordingly
         }
+
         return $next($request);
     }
 }

@@ -1,42 +1,58 @@
 <x-guest-layout>
+<style>
+    .rounded-t-5 {
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+
+    @media (min-width: 992px) {
+      .rounded-tr-lg-0 {
+        border-top-right-radius: 0;
+      }
+
+      .rounded-bl-lg-5 {
+        border-bottom-left-radius: 0.5rem;
+      }
+    }
+  </style>
     <x-authentication-card>
         <div class="flex flex-col lg:flex-row">
             <!-- Left Side: Image -->
-            <div class="lg:w-1/2 lg:relative flex items-center justify-center">
-                <img src="/images/login&register.jpg" alt="Login and Register Image" class="w-full max-w-full h-full rounded-lg shadow-lg">
-            </div>
+        
+   <div class="card mb-3">
+            <div class="row g-0 d-flex align-items-left">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <img src="/images/login&register.jpg" alt="Login and Register Image"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+      </div>
+      <div class="col-lg-8">
+            
 
             <!-- Right Side: Registration Form -->
-            <div class="w-full lg:w-3/4 lg:px-8 py-4 lg:py-8 flex items-center justify-center"> <!-- Decreased vertical padding to py-4 and py-8 -->
-                <div class="max-w-4xl w-full"> <!-- Adjusted max-width -->
+            <div class="w-full lg:w-2/3 lg:px-8 py-6 lg:py-8 flex items-center justify-center border-l border-transparent bg-white">
+                <div class="max-w-md w-full">
                     <h2 class="text-3xl font-bold mb-6 lg:mb-8 text-center">{{ __('Register') }}</h2>
 
                     <form method="POST" action="{{ route('register') }}" class="space-y-6">
                         @csrf
 
+                        <!-- Name Field -->
                         <div class="lg:flex lg:justify-between">
-    <div class="w-full mt-4">
-        <div>
-            <x-label for="name" :value="__('Name')" />
-        </div>
-        <div>
-            <x-input id="name" class="block w-full px-4 py-3 lg:py-4 text-lg rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-        </div>
-    </div>
-</div>
+                            <div class="w-full mt-4">
+                                <x-label for="name" :value="__('Name')" />
+                                <x-input id="name" class="block w-full px-4 py-3 lg:py-4 text-lg rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+                            </div>
+                        </div>
 
-<div class="lg:flex lg:justify-between mt-4">
-    <div class="w-full">
-        <div>
-            <x-label for="email" :value="__('Email')" />
-        </div>
-        <div>
-            <x-input id="email" class="block w-full px-4 py-3 lg:py-4 text-lg rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="email" name="email" :value="old('email')" required autocomplete="email" />
-        </div>
-    </div>
-</div>
+                        <!-- Email Field -->
+                        <div class="lg:flex lg:justify-between mt-4">
+                            <div class="w-full">
+                                <x-label for="email" :value="__('Email')" />
+                                <x-input id="email" class="block w-full px-4 py-3 lg:py-4 text-lg rounded-lg border-gray-300 focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50" type="email" name="email" :value="old('email')" required autocomplete="email" />
+                            </div>
+                        </div>
 
-
+                        <!-- Password Field -->
                         <div class="lg:flex lg:justify-between">
                             <div class="w-full mt-4">
                                 <x-label for="password" :value="__('Password')" />
@@ -49,6 +65,7 @@
                             </div>
                         </div>
 
+                        <!-- Confirm Password Field -->
                         <div class="lg:flex lg:justify-between">
                             <div class="w-full mt-4">
                                 <x-label for="password_confirmation" :value="__('Confirm Password')" />
@@ -96,6 +113,8 @@
                 </div>
             </div>
         </div>
+        </div>
+        </div>
     </x-authentication-card>
 
     <!-- Password Strength JavaScript -->
@@ -118,5 +137,7 @@
                 strengthLabel.style.color = 'red';
             }
         });
+       
     </script>
+    
 </x-guest-layout>
