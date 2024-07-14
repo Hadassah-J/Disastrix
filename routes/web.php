@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard',[StatisticsController::class,'calculateStatistics'])->name('calculate-statistics');
     Route::get('/admin', [AdminController::class, 'show']);
     Route::get('/admins',[AdminController::class, 'viewAdmins'])->name('admins');
+    Route::get('/heads',[AdminController::class,'viewOrganizationHeads'])->name('heads');
     Route::get('/users',[AdminController::class,'viewUsers'])->name('users');
     Route::get('/responders',[ResponderController::class,'index'])->name('responders');
     Route::get('/organizations',[OrganizationController::class,'viewOrganizations'])->name('organizations');
@@ -58,7 +59,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/notifications',[NotificationController::class,'index'])->name('notifications.index');
 
     Route::get('users/edit-users/{id}', [AdminController::class, 'viewUserInfo'])->name('edit-user');
+    Route::get('organizations/edit-organization/{id}', [OrganizationController::class, 'editOrganizationDetails'])->name('edit-organization');
+    Route::put('organizations/update/{id}', [OrganizationController::class, 'updateOrganizationDetails'])->name('update-organization');
     Route::put('user/update/{id}', [AdminController::class, 'updateUserInfo'])->name('update-user');
+    Route::delete('user/delete/{id}', [AdminController::class, 'deleteUser'])->name('delete-user');
+    Route::delete('head/delete/{id}', [AdminController::class,'deleteOrganizationHead'])->name('delete-head');
+    Route::delete('admin/delete/{id}', [AdminController::class,'deleteAdmin'])->name('delete-admin');
+    Route::delete('responder/delete/{id}',[AdminController::class,'deleteResponder'])->name('delete-responder');
+    Route::delete('organization/delete/{id}',[OrganizationController::class,'deleteOrganization'])->name('delete-organization');
 });
 Route::get('/respondents', 'RespondentController@index');
 Route::post('/respondents/call', 'RespondentController@call');

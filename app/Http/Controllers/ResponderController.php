@@ -23,8 +23,15 @@ class ResponderController extends Controller
     public function index()
     {
         $users=User::all();
-        $responders=Responder::all();
-        return view('organization/responder-view', compact('responders'), compact('users'));
+        $responders=Responder::all()
+                        ->paginate(10);
+        if(Auth::user()->role_id==3){
+            $head=Head::where('user_id',Auth::user()->id)->first();
+            $organization=$head->organization;
+            $responders=Responder::where('organization',$organization)->get()
+                         ->paginate(10);
+        }
+        return view('organization/responder-view', compact('responders','users'));
 
     }
 
@@ -49,7 +56,7 @@ class ResponderController extends Controller
         $users=collect();
         if ($head) {
             $organization = $head->organization;
-            $responders = Responder::where('organization', $organization)->get();
+            $responders = Responder::where('organization', $organization)->where('status','available')->get();
             $userIds = $responders->pluck('user_id'); // Collect all user IDs
             $users = User::whereIn('id', $userIds)->get()->keyBy('id');
         } else {

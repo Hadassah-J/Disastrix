@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Notification;
 class NotificationController extends Controller
 {
     public function index(){
-        $notifications=Auth::user()->notifications;
+        $notifications=Auth::user()->unreadNotifications;
         $marked=Auth::user()->unreadNotifications->markAsRead();
         return view('notifications.index',compact('notifications'));
     }
