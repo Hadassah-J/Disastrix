@@ -10,23 +10,26 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\LockScreenController;
+use App\Http\Middleware\UpdateLastSeen;
 use App\Http\Middleware\LockMiddleware;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
+Route::get('/dashboard', function () {
+    // Your logic here
+})->middleware(UpdateLastSeen::class);
+
+// Alternatively, you can group routes
+Route::middleware([UpdateLastSeen::class])->group(function () {
     Route::get('/dashboard', function () {
-        $user=Auth::user();
-        if($user->role_id==2){
-            return redirect()->route('calculate-statistics');
-        }else{
-        return view('dashboard');}
-    })->name('dashboard')->middleware((LockMiddleware::class));
+        // Your logic here
+    });
+    Route::get('/profile', function () {
+        // Another route requiring the middleware
+    });
 });
 Route::get('/lock', [LockScreenController::class, 'show'])->name('lock');
 Route::post('/unlock', [LockScreenController::class, 'unlock'])->name('unlock');
