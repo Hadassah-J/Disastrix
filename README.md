@@ -22,7 +22,7 @@ Before setting up and installing the project in your local storage, you must hav
 
 - **Visual Studio Code** - A code editor that supports multiple programming languages. It can be installed in the [Visual Studio Code website](https://code.visualstudio.com).
 - **Apache XAMPP server** - A web server that assists in connection to the database through MariaDB. It can be installed [here](https://www.apachefriends.org).
-- **Postmark** - An email server that aids in sending emails within the application. You can get its API key [here](https://postmarkapp.com)
+- **Gmail** - An email server that aids in sending emails within the application. You can follow [this tutorial](https://medium.com/@akhmadshaleh/sending-email-with-laravel-10-and-gmail-49be01c2bc8f) to use the server.
 
 ### Project setup
 - Once you have the required software programs, you first clone the project to your desired repository using the command:
@@ -39,13 +39,13 @@ DB_USERNAME=YOUR USERNAME
 DB_PASSWORD=YOUR PASSWORD
 ```
 ```
-MAIL_MAILER=postmark
-MAIL_HOST=smtp.postmarkapp.com
-MAIL_PORT=2525
-MAIL_USERNAME=YOUR API KEY
-MAIL_PASSWORD=YOUR API KEY
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=your email
+MAIL_PASSWORD=your app password
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=YOUR EMAIL ADDRESS
+MAIL_FROM_ADDRESS=your email
 MAIL_FROM_NAME="${APP_NAME}"
 
 ```

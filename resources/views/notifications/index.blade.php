@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-gradient-to-r from-sky-200 to-zinc-200 border-b border-gray-200">
+                <div class="p-4 bg-white rounded-lg shadow border border-gray-200 hover:bg-gray-50">
                     @forelse($notifications as $notification)
                     <div class="mb-4 bg-zinc-200">
                         <strong>Message:</strong> {{ $notification->data['message']}}

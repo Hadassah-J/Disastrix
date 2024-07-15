@@ -28,17 +28,18 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
-        
+
         // Find or create the role
-        $role = Role::firstOrCreate(['name' => 'Public user']);
-        
+       $role_id=Role::where('name','Public user')->first()->id;
+
         return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'role_id' => $role->id,
+            'role_id' => $role_id,
+
             'password' => Hash::make($input['password']),
         ]);
-        
+
 
 
 

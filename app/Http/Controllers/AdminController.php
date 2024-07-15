@@ -162,7 +162,46 @@ public function addAdmin(Request $request) {
         return redirect('login')->with('success',201);
 
     }
+    public function deleteAdmin($id){
+        $admin = Admin::findOrFail($id);
+        $user = User::where('id', $admin->user_id)->first();
+        $user->delete();
+        $admin->delete();
+
+
+        return redirect()->route('admins')->with('success', 'Admin deleted successfully.');
     }
+
+    public function viewOrganizationHeads(){
+        $heads=Head::all();
+        return view('organization.head-view',compact('heads'));
+    }
+    public function deleteOrganizationHead($id){
+        $head = Head::findOrFail($id);
+        $user= User::where('id', $head->user_id)->first();
+        $user->delete();
+        $head->delete();
+
+
+        return redirect()->route('heads')->with('success', 'Organization Head deleted successfully.');
+    }
+    public function deleteResponder($id){
+        $responder = Responder::findOrFail($id);
+        $user= User::where('id', $responder->user_id)->first();
+        $user->delete();
+        $responder->delete();
+
+
+        return redirect()->route('responders')->with('success', 'Responder deleted successfully.');
+    }
+    public function deleteUser($id){
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('users')->with('success', 'User deleted successfully.');
+    }
+
+}
 
 
 
